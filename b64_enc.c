@@ -1,4 +1,4 @@
-/* Base64 encoder operating on streams.
+/* Base64 encoder.
 */
 
 #include "b64_enc.h"
@@ -17,7 +17,7 @@ void b64_enc(FILE *i_s, FILE *o_s)
         // populate reg32 with 3 bytes
         for(i = 0; i < 3; i++)
         {
-            int c = fgetc(i_s);
+            int c = fgetc(i_s); // manually load to avoid issues with little
             if(c == EOF)
             {
                 stop_flag = 1;

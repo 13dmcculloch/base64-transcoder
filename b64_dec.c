@@ -1,4 +1,4 @@
-/* Base64 decoder operating on streams.
+/* Base64 decoder.
 */
 
 #include "b64_dec.h"
@@ -17,7 +17,7 @@ void b64_dec(FILE *i_s, FILE *o_s, char op_fmt)
         // recover binary stream in 4 blocks of 6 bits 
         for(int i = 0; i < 4; i++)
         {
-            int c = fgetc(i_s);
+            int c = fgetc(i_s);  // avoid issues with little endianness
             if(c == EOF || c == '=')
             {
                 stop_flag = 1;
@@ -28,6 +28,7 @@ void b64_dec(FILE *i_s, FILE *o_s, char op_fmt)
             else
             {
                 // arithmetic to convert ASCII to B64 
+                // perhaps reimplement as branchless
                 if(c >= 65 && c <= 90) c -= 65;
                 else if(c >= 97 && c <= 122) c -= 97 - 26;
                 else if(c >= 48 && c <= 57) c -= 48 - 52;
@@ -70,7 +71,7 @@ void b64_dec(FILE *i_s, FILE *o_s, char op_fmt)
                     c >>= 16 - i * 8;
                     mask >>= 8;
 
-                    fwrite(&c, sizeof(char), 1, o_s);
+                    fwrite(&c, sizeof(char), 1, o_s);  // force big endian 
                 }
                break;
 

@@ -1,5 +1,9 @@
 /* Base64 decoder.
  *
+ * Decoder function takes input, output stream, and a char representing the
+ * output format, which is either char-formatted using fprintf(fp,"%c"...) or
+ * binary formatted using fwrite(3 char blocks).
+ *
  * Douglas McCulloch, August 2023
 */
 

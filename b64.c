@@ -1,5 +1,15 @@
 /* Base64 transcoder on streams.
  * 
+ * Can encode/decode a stream into/out of Base64. Can specify stream, but
+ * default is stdin and stdout for input and output streams respectively.
+ *
+ * This is my first program that uses typical command line options (using
+ * getopt()) and bitwise operations. The implementation is probably quite
+ * poor, but I think it is independent of endinaness as fgetc() is called
+ * repeatedly instead of using fread() or fwrite(). This was done on purpose
+ * because while my machine is little, one may wish to compile this on a big
+ * machine.
+ * 
  * Douglas McCulloch, August 2023
  */
 
