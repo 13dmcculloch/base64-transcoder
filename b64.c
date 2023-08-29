@@ -76,14 +76,17 @@ int main(int argc, char **argv)
 
     if(f_chgin)
     {
-        fclose(in_stream);
-        in_stream = fopen(i_s_name, "rb");
+        FILE *tmp = fopen(i_s_name, "rb");
+        if(tmp == NULL) { printf("Failed to open input stream: %s\n", i_s_name); return 1; }
+        else { fclose(in_stream); in_stream = tmp; }
     }
 
     if(f_chgout)
     {
-        fclose(out_stream);
-        out_stream = fopen(o_s_name, "wb");
+
+        FILE *tmp = fopen(o_s_name, "wb");
+        if(tmp == NULL) { printf("Failed to open output stream: %s\n", o_s_name); return 1; }
+        else { fclose(out_stream); out_stream = tmp; }
     }
 
     if(f_encode) b64_enc(in_stream, out_stream);
@@ -95,6 +98,9 @@ int main(int argc, char **argv)
     }
 
     printf("\n");
+
+    fclose(in_stream);
+    fclose(out_stream);
 
     return 0;
 }
