@@ -1,0 +1,27 @@
+.TH B64
+.SH NAME
+b64 /- Base64 encoder/decoder operating on streams
+.SH SYNOPSIS
+.B b64
+[\fB\-e\fR] 
+[\fB\-d\fR \fIASCII\fR \fIbinary\fR]
+[\fB\-i\fR \fIinput_stream\fR]
+[\fB\-o\fR \fIoutput_stream\fR]
+.SH DESCRIPTION
+.B b64
+by default takes input from stdin and transcodes it to stdout, though streams
+may be specified using the options. Base64 may be decoded to ASCII formatted
+characters or to a binary stream.
+.SH OPTIONS
+.TP
+.BR \-e
+Encode input stream to Base64 on output stream.
+.TP
+.BR \-d " " \fIASCII\fR  \fIbinary\fR
+Decode input stream to either ASCII formatted characters or to binary.
+.TP
+.BR \-i " " \fIinput_stream\fR
+Specify input stream or file.
+.TP
+.BR \-o " " \foutput_stream\fR
+Specify output stream or file.
