@@ -3,6 +3,13 @@
 This program is designed to encode and decode a typical Base64 stream from an
 input stream.
 
+### Installation
+
+`make` then
+`cp b64 /usr/local/bin`
+
+### Usage
+
 Usage: `b64 [-e] [-d ASCII/binary] [-i if] [-o of]`
 
 ### Technical information
@@ -22,6 +29,3 @@ output stream.
 For decoding, a 32-bit variable is loaded with 3 bytes using fgetc() to force a
 big-endian byte order. Then, depending on whether the output is specified to be
 either ASCII or binary, the decoded data will be sent to the output stream.
-
-### Todo:
-- open stream as text if ASCII option specified(?)
