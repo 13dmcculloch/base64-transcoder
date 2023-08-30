@@ -5,8 +5,15 @@ input stream.
 
 ### Installation
 
-`make` then
+`make`
+
+then
+
 `cp b64 /usr/local/bin`
+
+For manpage:
+
+`cp manpage/b64.1.gz /usr/local/share/man/man1`
 
 ### Usage
 
